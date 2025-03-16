@@ -12,7 +12,7 @@ app.get("/",(req,res,next)=>{
   res.send('hello world')
 });
 
-
+app.use(cors())
 app.use(notesRouter)
 
 const PORT = process.env.PORT;
