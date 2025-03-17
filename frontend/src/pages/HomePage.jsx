@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react"
 import { getNotes } from "../api/api";
 const HomePage = () =>{
-  
- 
- const fetchNotes = async (params) => {
+  const [notes,setNotes] = useState([])
+ const fetchNotes = async (params) => { 
   const get = await getNotes();
-  console.log(get.data);
+  alert(get.data.message);
+  
+  setNotes(get.data);
  }
 
  useEffect(()=>{
@@ -14,8 +15,11 @@ const HomePage = () =>{
  
   return(
     <div>
-      <h1>My Notes</h1>
-
+      {notes.map((note)=>{
+        return <div key={note._id}>
+          <h2>{note.content}</h2>
+        </div>
+      })}
     </div>
   )
 }
