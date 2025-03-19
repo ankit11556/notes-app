@@ -16,7 +16,7 @@ const HomePage = () =>{
   fetchNotes()
  },[]);
 
- const hadleDelete = async (id) =>{
+ const handleDelete = async (id) =>{
   try {
     const response = await deleteNote(id);
     alert(response.data.message);
@@ -31,7 +31,7 @@ const HomePage = () =>{
     <div className="flex flex-wrap gap-4 justify-center mt-6" >
       {notes.map((note)=>{
         return <div key={note._id}>
-          <NoteCard note={note} onDelete={hadleDelete}></NoteCard>
+          <NoteCard note={note} onDelete={handleDelete}></NoteCard>
         </div>
       })}
     </div>
