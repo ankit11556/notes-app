@@ -1,12 +1,13 @@
 import { useState } from "react"
 import { addNote } from "../api/api"
 import {useNavigate} from "react-router-dom"
+
 const AddNotePage = () =>{
   const [title,setTitle] = useState("")
   const [content,setContent] = useState("");
  const navigate = useNavigate()
 
-
+ //Post
   const handleSubmit = async (e) =>{
   e.preventDefault();
   if (!title || !content) {
