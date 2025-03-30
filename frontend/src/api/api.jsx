@@ -16,3 +16,8 @@ export const deleteNote = async (id) => {
   const response = await axios.delete(`${API_URL}/notes/${id}`)
   return response;
 }
+
+export const updateNote = async (id,noteData) => {
+  const response = await axios.put(`${API_URL}/notes/${id}`,noteData);
+  return response;
+}
