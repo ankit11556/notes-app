@@ -1,12 +1,17 @@
 import { useEffect, useState } from "react"
 import { getNotes } from "../api/api";
+import NoteCard from "../components/NoteCard";
+
 const HomePage = () =>{
   const [notes,setNotes] = useState([])
- const fetchNotes = async (params) => { 
+ const fetchNotes = async () => { 
+ try {
   const get = await getNotes();
-  alert(get.data.message);
-  
   setNotes(get.data);
+ } catch (error) {
+  console.log("error fatching data",error);
+  
+ }
  }
 
  useEffect(()=>{
@@ -14,10 +19,10 @@ const HomePage = () =>{
  },[])
  
   return(
-    <div>
+    <div className="flex flex-wrap gap-4 justify-center mt-6" >
       {notes.map((note)=>{
         return <div key={note._id}>
-          <h2>{note.content}</h2>
+          <NoteCard note={note}></NoteCard>
         </div>
       })}
     </div>
