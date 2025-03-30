@@ -6,7 +6,7 @@ try {
   const newNote = new Note({title,content});
 
   await newNote.save();
-  res.status(200).json({message: "Add note successfully",newNote})
+  res.status(201).json({message: "Add note successfully",newNote})
 } catch (error) {
   res.status(500).json({message: "note add failed",error: error.message})
 }
