@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 require('dotenv').config()
 
+require('./config/db')
 app.use("/",(req,res,next)=>{
   res.send('hello world')
   next()
